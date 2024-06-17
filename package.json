@@ -1,0 +1,13 @@
+{
+  "name": "@locustjs/keyboard",
+  "version": "1.0.0",
+  "description": "This library provides helpers and enums regarding keyboard.",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
