@@ -1,7 +1,6 @@
 import Keys from "./keys";
 import Ascii from "./ascii";
-
-const isSomeString = (x) => typeof x == "string" && x.length;
+import { isSomeString } from "@locustjs/base";
 
 function _isKey(e, shortCut) {
   let result = false;
