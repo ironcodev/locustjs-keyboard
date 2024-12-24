@@ -1,5 +1,4 @@
 import Keys from "./keys";
-import Ascii from "./ascii";
 import { isSomeString } from "@locustjs/base";
 
 function _isKey(e, shortCut) {
@@ -11,18 +10,31 @@ function _isKey(e, shortCut) {
     for (let key of keys) {
       let _key = key.trim();
       let optional = false;
+      let not = false;
 
       if (_key.endsWith("?")) {
         _key = _key.substr(0, _key.length - 1);
         optional = true;
       }
 
+      if (_key.startsWith("!")) {
+        _key = _key.substr(1);
+        not = true;
+      }
+
       if (_key) {
         if (_key == "shift") {
           result = e.shiftKey;
 
-          if (!result && !optional) {
-            break;
+          if (not) {
+            if (result) {
+              result = false;
+              break;
+            }
+          } else {
+            if (!result && !optional) {
+              break;
+            }
           }
 
           continue;
@@ -30,8 +42,15 @@ function _isKey(e, shortCut) {
         if (_key == "alt") {
           result = e.altKey;
 
-          if (!result && !optional) {
-            break;
+          if (not) {
+            if (result) {
+              result = false;
+              break;
+            }
+          } else {
+            if (!result && !optional) {
+              break;
+            }
           }
 
           continue;
@@ -39,8 +58,15 @@ function _isKey(e, shortCut) {
         if (_key == "ctrl") {
           result = e.ctrlKey;
 
-          if (!result && !optional) {
-            break;
+          if (not) {
+            if (result) {
+              result = false;
+              break;
+            }
+          } else {
+            if (!result && !optional) {
+              break;
+            }
           }
 
           continue;
@@ -50,15 +76,6 @@ function _isKey(e, shortCut) {
 
         if (Keys[pascalKey] != undefined) {
           result = e.keyCode == Keys[pascalKey];
-
-          if (!result && !optional) {
-            break;
-          }
-
-          continue;
-        }
-        if (Ascii[pascalKey] != undefined) {
-          result = e.keyCode == Ascii[pascalKey];
 
           if (!result && !optional) {
             break;

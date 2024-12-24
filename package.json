@@ -1,14 +1,20 @@
 {
   "name": "@locustjs/keyboard",
   "version": "1.0.0",
-  "description": "This library provides helpers and enums regarding keyboard.",
+  "description": "This library provides helpers regarding keyboard.",
   "main": "dist/index.js",
   "module": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "test": "node -r esm ./tests/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "locustjs",
+    "javascript",
+    "keyboard",
+    "helper"
+  ],
+  "author": "Iron Code",
   "license": "MIT",
   "dependencies": {
     "@locustjs/base": "^4.2.0"
